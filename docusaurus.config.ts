@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -10,15 +12,15 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://Z-MAX-BOOM.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/my-website/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Z-MAX-BOOM', // Usually your GitHub org/user name.
+  projectName: 'my-website', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -39,8 +41,12 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          path: 'docs',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+          editUrl: 'https://github.com/Z-MAX-BOOM/my-website/',
         },
         blog: {
           showReadingTime: true,
@@ -50,8 +56,7 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/Z-MAX-BOOM/my-website/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -62,6 +67,15 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+  ],
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+          'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 
   themeConfig: {
@@ -100,8 +114,8 @@ const config: Config = {
               to: '/docs/intro',
             },
             {
-              label: 'SharkBot',
-              to: '/docs/sharkbot',
+              label: 'sharkBot',
+              to: '/docs/category/sharkbot',
             }
           ],
         },
@@ -145,16 +159,4 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
 };
 
-export default {
-  url: 'https://Z-MAX-BOOM.github.io', // Your website URL
-  baseUrl: '/',
-  projectName: 'Z-MAX-BOOM.github.io',
-  organizationName: 'Z-MAX-BOOM',
-  trailingSlash: false,
-  customFields: {
-    // Put your custom environment here
-    USE_SSH : true,
-    GIT_USER_NAME : "shark",
-    GIT_USER_EMAIL : "will.zmax@outlook.com",
-  },
-};
+export default config;

@@ -6,7 +6,7 @@ sidebar_position: 1
 如何从零开始5min搭建一个网站
 参考: https://www.docusaurus.cn/docs
 
-## 安装
+## 1. 安装
 1. 安装node.js  https://nodejs.org/en/download/
 选择node.js以及你的操作系统，然后按照提示安装即可。
 例如我的是ubuntu 22.04，安装命令如下：
@@ -35,7 +35,7 @@ npx create-docusaurus@latest my-website classic --typescript
 ```
 
 
-## 启动网站
+## 2. 启动网站
 
 1. 上一步如果安装成功，则会在你的Home下生成：
     ```
@@ -88,6 +88,7 @@ npx create-docusaurus@latest my-website classic --typescript
 - /sidebars.js
   
   生成文档时使用此文件来指定侧边栏中的文档顺序
+
 3. 启动网站
     ```
     cd my-website
@@ -104,18 +105,134 @@ npx create-docusaurus@latest my-website classic --typescript
 
     在 /blog 目录下，你可以创建新的博客文章
 
-## 构建网站
+## 3. 部署到GitHub
+1. 注册GitHub账号
+2. 创建一个新的仓库，仓库名称为: my-website
+3. 在本地仓库中执行以下命令：(提前配置好ssh密钥关联GitHub)
+```
+git init
+git branch -m main
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:Z-MAX-BOOM/my-website.git
+git push -u origin main
+```
+4. 构建网站并测试静态页面
 ```
 npm run build
 ```
 生成的内容将被放置到 /build 目录下，该目录可以复制到任何静态文件托管服务上，例如 GitHub pages、Vercel 或 Netlify。
+```
+npm run servey
+```
+默认情况下，浏览器将打开http://localhost:3000/my-website/网址。
 
-## 部署到GitHub
-1. 注册GitHub账号
-2. 创建一个新的仓库，仓库名称为: 你的GitHub用户名.github.io
-3. 在本地仓库中执行以下命令：
+5. 部署到GitHub pages
+
+Docusaurus 为我们提供了 deploy 命令，能自动完成构建项目、推送至仓库、发布网站等任务。
 ```
-git init
-git add .
-git commit -m "Initial commit"
+npm run deploy
 ```
+
+6. 访问https://Z-MAX-BOOM.github.io/my-website/即可访问你的网站 
+
+## 4. 自动部署
+
+使用 Github Actions 自动化部署
+
+要使用 Github Actions ，我们需要撰写相应的工作流文件（.yaml或.yml格式），来让 Github Actions 为项目提供相应的工作流程。幸运的是，Docusaurus 已经为我们写好了相应的文件：
+
+```
+cd my-website
+mkdir -p .github/workflows
+cd .github/workflows
+touch deploy.yml
+```
+```
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+jobs:
+  build:
+    name: Build Docusaurus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build website
+        run: yarn build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+```
+cd my-website
+mkdir -p .github/workflows
+cd .github/workflows
+touch test-deploy.yml
+```
+```
+name: Test deployment
+
+on:
+  pull_request:
+    branches:
+      - main
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+jobs:
+  test-deploy:
+    name: Test deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test build website
+        run: yarn build
+```
+编写这两个文件放入项目中的.github/workflows/文件夹并上传至 Github 仓库中，我们即可实现基于 Github Actions 的网站自动化部署。
