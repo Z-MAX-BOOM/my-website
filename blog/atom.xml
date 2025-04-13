@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://Z-MAX-BOOM.github.io/my-website/blog</id>
+    <title>Shaaaaark Blog</title>
+    <updated>2025-04-13T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://Z-MAX-BOOM.github.io/my-website/blog"/>
+    <subtitle>Shaaaaark Blog</subtitle>
+    <icon>https://Z-MAX-BOOM.github.io/my-website/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[First Blog]]></title>
+        <id>https://Z-MAX-BOOM.github.io/my-website/blog/first-blog</id>
+        <link href="https://Z-MAX-BOOM.github.io/my-website/blog/first-blog"/>
+        <updated>2025-04-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to my blog!]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to my blog!</p>
+<p>This website is first built on 2024-3-12.</p>
+<p>Hope Everyone of Shaaaaark will enjoy it!</p>
+<p><a href="https://www.docusaurus.cn/docs" target="_blank" rel="noopener noreferrer">https://www.docusaurus.cn/docs</a></p>]]></content>
+        <author>
+            <name>shark</name>
+            <uri>https://github.com/Z-MAX-BOOM</uri>
+        </author>
+        <category label="Facebook" term="Facebook"/>
+        <category label="Docusaurus" term="Docusaurus"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>https://Z-MAX-BOOM.github.io/my-website/blog/welcome</id>
+        <link href="https://Z-MAX-BOOM.github.io/my-website/blog/welcome"/>
+        <updated>2021-08-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to my blog!]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to my blog!</p>]]></content>
+        <author>
+            <name>shark</name>
+            <uri>https://github.com/Z-MAX-BOOM</uri>
+        </author>
+        <category label="Facebook" term="Facebook"/>
+        <category label="Docusaurus" term="Docusaurus"/>
+    </entry>
+</feed>
