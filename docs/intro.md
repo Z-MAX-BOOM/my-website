@@ -136,7 +136,7 @@ npx create-docusaurus@latest my-website classic --typescript
     ```
     5. 修改界面颜色
     参考: https://docusaurus.io/docs/styling-layout
-    
+
 ## 3. 部署到GitHub
 1. 注册GitHub账号
 2. 创建一个新的仓库，仓库名称为: my-website
@@ -155,7 +155,7 @@ npm run build
 ```
 生成的内容将被放置到 /build 目录下，该目录可以复制到任何静态文件托管服务上，例如 GitHub pages、Vercel 或 Netlify。
 ```
-npm run servey
+npm run serve
 ```
 默认情况下，浏览器将打开http://localhost:3000/my-website/网址。
 

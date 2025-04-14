@@ -23,4 +23,6 @@ jobs:
       - name: Test build website
         run: yarn build
       - name: Deploy to GitHub Pages
+        env: 
+          GIT_USER: "Z-MAX_BOOM"
         run: yarn deploy
