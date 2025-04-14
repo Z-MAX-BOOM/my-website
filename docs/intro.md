@@ -166,15 +166,15 @@ Docusaurus 为我们提供了 deploy 命令，能自动完成构建项目、推�
 npm run deploy
 ```
 
-6. 访问https://Z-MAX-BOOM.github.io/my-website/即可访问你的网站 
+6. 访问https://Z-MAX-BOOM.github.io/my-website/
 
 ## 4. 自动部署
 
 使用 Github Actions 自动化部署
 
 要使用 Github Actions ，我们需要撰写相应的工作流文件（.yaml或.yml格式），来让 Github Actions 为项目提供相应的工作流程。幸运的是，Docusaurus 已经为我们写好了相应的文件：
-```
-# 安装yarn
+```bash
+# 更换npm安装yarn
 npm install --global yarn
 cd my-website
 yarn install   # 安装yarn依赖
@@ -185,17 +185,19 @@ mkdir -p .github/workflows
 cd .github/workflows
 touch deploy.yml
 ```
-```
-name: Test and Deploy
+```yml
+name: Deploy to GitHub Pages
 
 on:
-  # 当代码推送到 main 分支时触发
   push:
-    branches: [ main ]
+    branches:
+      - main
+    # Review gh actions docs if you want to further define triggers, paths, etc
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
-  test-deploy:
-    name: Test deployment
+  build:
+    name: Build Docusaurus
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -208,9 +210,33 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Test build website
+      - name: Build website
         run: yarn build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: https://z-max-boom.github.io/my-website/
+
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        run: yarn deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
 ```
 编写文件放入项目中的.github/workflows/文件夹并上传至 Github 仓库中，我们即可实现基于 Github Actions 的网站自动化部署。
+
+如果部署失败，请在仓库的设置中删除对gh-pages分支的保护规则。
