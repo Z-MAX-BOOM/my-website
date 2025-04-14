@@ -21,15 +21,5 @@
             <category>Facebook</category>
             <category>Docusaurus</category>
         </item>
-        <item>
-            <title><![CDATA[Welcome]]></title>
-            <link>https://Z-MAX-BOOM.github.io/my-website/blog/welcome</link>
-            <guid>https://Z-MAX-BOOM.github.io/my-website/blog/welcome</guid>
-            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Welcome to my blog!]]></description>
-            <content:encoded><![CDATA[<p>Welcome to my blog!</p>]]></content:encoded>
-            <category>Facebook</category>
-            <category>Docusaurus</category>
-        </item>
     </channel>
 </rss>

@@ -24,18 +24,4 @@
         <category label="Facebook" term="Facebook"/>
         <category label="Docusaurus" term="Docusaurus"/>
     </entry>
-    <entry>
-        <title type="html"><![CDATA[Welcome]]></title>
-        <id>https://Z-MAX-BOOM.github.io/my-website/blog/welcome</id>
-        <link href="https://Z-MAX-BOOM.github.io/my-website/blog/welcome"/>
-        <updated>2021-08-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Welcome to my blog!]]></summary>
-        <content type="html"><![CDATA[<p>Welcome to my blog!</p>]]></content>
-        <author>
-            <name>shark</name>
-            <uri>https://github.com/Z-MAX-BOOM</uri>
-        </author>
-        <category label="Facebook" term="Facebook"/>
-        <category label="Docusaurus" term="Docusaurus"/>
-    </entry>
 </feed>
