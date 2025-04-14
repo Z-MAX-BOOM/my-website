@@ -99,12 +99,44 @@ npx create-docusaurus@latest my-website classic --typescript
 
 4. 编辑网站
 
-    在 /src/pages 目录下，你可以创建新的页面
+    1. 在 /src/pages 目录下，你可以创建新的页面
 
-    在 /docs 目录下，你可以创建新的文档
+    2. 在 /docs 目录下，你可以创建新的文档
 
-    在 /blog 目录下，你可以创建新的博客文章
+    3. 在 /blog 目录下，你可以创建新的博客文章
 
+    4. 添加Latex数学公式插件
+
+    打开你的docusaurus.config.ts
+    添加以下代码：
+    ```  
+    import remarkMath from 'remark-math';
+    import rehypeKatex from 'rehype-katex';
+    presets: [
+    [
+        'classic',
+        {
+          docs: {
+            path: 'docs',
+            remarkPlugins: [remarkMath],
+            rehypePlugins: [rehypeKatex],
+          },
+        }
+      ]
+    ],
+    stylesheets: [
+        {
+          href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+          type: 'text/css',
+          integrity:
+              'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+          crossorigin: 'anonymous',
+        },
+      ],
+    ```
+    5. 修改界面颜色
+    参考: https://docusaurus.io/docs/styling-layout
+    
 ## 3. 部署到GitHub
 1. 注册GitHub账号
 2. 创建一个新的仓库，仓库名称为: my-website
@@ -144,6 +176,9 @@ npm run deploy
 ```
 # 安装yarn
 npm install --global yarn
+cd my-website
+yarn install   # 安装yarn依赖
+
 # 配置Github Actions,将工作流文件上传到 GitHub 仓库，GitHub Actions 会自动识别并执行。
 cd my-website
 mkdir -p .github/workflows
