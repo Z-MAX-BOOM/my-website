@@ -1,0 +1,8 @@
+{
+    "label": "Anime",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "description": "记录看过的动漫"
+    }
+  }

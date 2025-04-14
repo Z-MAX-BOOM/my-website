@@ -1,0 +1,8 @@
+{
+    "label": "Book",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "description": "记录看过的书"
+    }
+  }

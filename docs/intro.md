@@ -141,81 +141,22 @@ npm run deploy
 使用 Github Actions 自动化部署
 
 要使用 Github Actions ，我们需要撰写相应的工作流文件（.yaml或.yml格式），来让 Github Actions 为项目提供相应的工作流程。幸运的是，Docusaurus 已经为我们写好了相应的文件：
-
 ```
+# 安装yarn
+npm install --global yarn
+# 配置Github Actions,将工作流文件上传到 GitHub 仓库，GitHub Actions 会自动识别并执行。
 cd my-website
 mkdir -p .github/workflows
 cd .github/workflows
 touch deploy.yml
 ```
 ```
-name: Deploy to GitHub Pages
+name: Test and Deploy
 
 on:
+  # 当代码推送到 main 分支时触发
   push:
-    branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
-
-jobs:
-  build:
-    name: Build Docusaurus
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: yarn
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Build website
-        run: yarn build
-
-      - name: Upload Build Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: build
-
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-```
-cd my-website
-mkdir -p .github/workflows
-cd .github/workflows
-touch test-deploy.yml
-```
-```
-name: Test deployment
-
-on:
-  pull_request:
-    branches:
-      - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    branches: [ main ]
 
 jobs:
   test-deploy:
@@ -234,5 +175,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test build website
         run: yarn build
+      - name: Deploy to GitHub Pages
+        run: yarn deploy
 ```
-编写这两个文件放入项目中的.github/workflows/文件夹并上传至 Github 仓库中，我们即可实现基于 Github Actions 的网站自动化部署。
+编写文件放入项目中的.github/workflows/文件夹并上传至 Github 仓库中，我们即可实现基于 Github Actions 的网站自动化部署。

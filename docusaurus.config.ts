@@ -88,12 +88,6 @@ const config: Config = {
         src: 'img/shaaaaark.svg',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
         {to: '/docs/intro', label: 'Docs', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {
@@ -110,11 +104,11 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Intro',
               to: '/docs/intro',
             },
             {
-              label: 'sharkBot',
+              label: 'SharkBot',
               to: '/docs/category/sharkbot',
             }
           ],
@@ -125,6 +119,10 @@ const config: Config = {
             {
               label: 'X',
               href: 'https://x.com/Z-MAX-MIN',
+            },
+            {
+              label: 'Outlook',
+              href: 'mailto:will.zmax@outlook.com',
             },
             {
               label: 'Weibo',
