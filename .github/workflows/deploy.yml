@@ -24,5 +24,13 @@ jobs:
         run: yarn build
       - name: Deploy to GitHub Pages
         env: 
-          GIT_USER: "Z-MAX_BOOM"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - name: Deploy to GitHub Pages
+        env:
+          USE_SSH: true
         run: yarn deploy
