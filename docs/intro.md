@@ -54,13 +54,13 @@ npx create-docusaurus@latest my-website classic --typescript
     │   │   └── custom.css
     │   └── pages
     │       ├── styles.module.css
-    │       └── index.js
+    │       └── index.tsx
     ├── static
     │   └── img
-    ├── docusaurus.config.js
+    ├── docusaurus.config.ts
     ├── package.json
     ├── README.md
-    ├── sidebars.js
+    ├── sidebars.ts
     └── yarn.lock
     ```
 2. 项目结构概要
@@ -79,13 +79,13 @@ npx create-docusaurus@latest my-website classic --typescript
 - /static/
 
   存放静态文件的目录。此处的所有内容都将被复制到最终的 build 目录的根目录下
-- /docusaurus.config.js
+- /docusaurus.config.ts
   
   包含站点配置的配置文件。与 Docusaurus 1 中的 siteConfig.js 文件等价
 - /package.json
   
   Docusaurus 网站也是一个 React 应用程序。你可以在其中安装和使用所需的任何 npm 软件包
-- /sidebars.js
+- /sidebars.ts
   
   生成文档时使用此文件来指定侧边栏中的文档顺序
 
@@ -94,7 +94,7 @@ npx create-docusaurus@latest my-website classic --typescript
     cd my-website
     npm run start
     ```
-    默认情况下，浏览器将打开 http://localhost:3000 网址。
+    默认情况下，浏览器将打开 http://localhost:3000
     恭喜你！您刚刚创建了第一个 Docusaurus 网站！浏览网站以查看可用内容吧。
 
 4. 编辑网站
@@ -157,7 +157,7 @@ npm run build
 ```
 npm run serve
 ```
-默认情况下，浏览器将打开http://localhost:3000/my-website/网址。
+默认情况下，浏览器将打开http://localhost:3000/my-website/
 
 5. 部署到GitHub pages
 
