@@ -38,31 +38,31 @@ npx create-docusaurus@latest my-website classic --typescript
 ## 2. 启动网站
 
 1. 上一步如果安装成功，则会在你的Home下生成：
-    ```
-    my-website
-    ├── blog
-    │   ├── 2019-05-28-hola.md
-    │   ├── 2019-05-29-hello-world.md
-    │   └── 2020-05-30-welcome.md
-    ├── docs
-    │   ├── doc1.md
-    │   ├── doc2.md
-    │   ├── doc3.md
-    │   └── mdx.md
-    ├── src
-    │   ├── css
-    │   │   └── custom.css
-    │   └── pages
-    │       ├── styles.module.css
-    │       └── index.tsx
-    ├── static
-    │   └── img
-    ├── docusaurus.config.ts
-    ├── package.json
-    ├── README.md
-    ├── sidebars.ts
-    └── yarn.lock
-    ```
+```
+my-website
+├── blog
+│   ├── 2019-05-28-hola.md
+│   ├── 2019-05-29-hello-world.md
+│   └── 2020-05-30-welcome.md
+├── docs
+│   ├── doc1.md
+│   ├── doc2.md
+│   ├── doc3.md
+│   └── mdx.md
+├── src
+│   ├── css
+│   │   └── custom.css
+│   └── pages
+│       ├── styles.module.css
+│       └── index.tsx
+├── static
+│   └── img
+├── docusaurus.config.ts
+├── package.json
+├── README.md
+├── sidebars.ts
+└── yarn.lock
+```
 2. 项目结构概要
 - /blog/
 
@@ -90,12 +90,13 @@ npx create-docusaurus@latest my-website classic --typescript
   生成文档时使用此文件来指定侧边栏中的文档顺序
 
 3. 启动网站
-    ```
-    cd my-website
-    npm run start
-    ```
-    默认情况下，浏览器将打开 http://localhost:3000
-    恭喜你！您刚刚创建了第一个 Docusaurus 网站！浏览网站以查看可用内容吧。
+```
+cd my-website
+npm run start
+```
+默认情况下，浏览器将打开 http://localhost:3000
+
+恭喜你！您刚刚创建了第一个 Docusaurus 网站！浏览网站以查看可用内容吧。
 
 4. 编辑网站
 
@@ -108,6 +109,7 @@ npx create-docusaurus@latest my-website classic --typescript
     4. 添加Latex数学公式插件
 
     打开你的docusaurus.config.ts
+    
     添加以下代码：
     ```  
     import remarkMath from 'remark-math';
