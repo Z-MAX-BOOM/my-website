@@ -1,12 +1,11 @@
 ---
 sidebar_position: 1
 ---
-
 # SEVENTH HEAVEN
 
 ## milet (ミレイ)
 
-![vision](static/img/vision.jepg)
+![vision](./img/SEVENTH_HEAVEN.jpg)
 
 词：milet
 
