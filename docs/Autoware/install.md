@@ -2,6 +2,10 @@
 本文章是ROS2 Humble版本的最新autoware源码安装方式、autoware.universe安装方式
 ubuntu22.04
 
+官方安装文档:
+
+https://autowarefoundation.github.io/autoware-documentation/main/
+
 ## 1. 克隆autoware仓库
 ```
 git clone https://github.com/autowarefoundation/autoware.git
@@ -23,6 +27,10 @@ cd autoware
     解决方案: 科学上网-全局代理
 
     [修改DNS和Hosts文件](https://zhuanlan.zhihu.com/p/676396123)
+    ```
+    export http_proxy=http://github.com:20171
+    export https_proxy=http://github.com:20171
+    ```
     
     1. 修改DNS
     ```
@@ -83,6 +91,16 @@ cd autoware
 ```
 漫长的等待过程....................
 
+历经千辛万苦,反复切换科学上网工具,最后成功安装
+
+输出:
+```
+PLAY RECAP *********************************************************************
+localhost                  : ok=158  changed=39   unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+
+Completed.
+```
+
 ## 5. 测试
 1. 使用vcstool来创建工作空间
 ```
@@ -93,14 +111,54 @@ vcs import src < autoware.repos
 2. 安装Ros依赖包
 ```
 source /opt/ros/humble/setup.bash
+# Make sure all previously installed ros-$ROS_DISTRO-* packages are upgraded to their latest version
+sudo apt update && sudo apt upgrade
 rosdep update
 rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
-3. 建立工作空间
+3. 编译工作空间
 ```
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
-4. 更新工作空间
+4. 编译报错
+- 参考这篇博客:
+
+https://blog.csdn.net/zardforever123/article/details/132029636
+
+- 如果无法解决报错,可以暂时跳过该包的编译
+```
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-skip 包名称
+
+autoware_utils_geometry
+autoware_diagnostic_graph_aggregator
+autoware_utils_tf
+```
+- 更换gcc-9.5
+```
+mkdir gcc
+cd gcc
+sudo apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances --no-pre-depends gcc-9 | grep -v i386 | grep "^\w")
+sudo dpkg -i *.deb
+sudo ln -s gcc-9 gcc
+#提高你需要版本的优先级
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 500
+#查看成功
+gcc --version
+
+```
+- 更换g++-9.5
+```
+sudo apt install g++-9
+sudo ln -s g++-9 g++
+#提高你需要版本的优先级
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 500
+#查看成功
+g++ --version
+```
+历经九九八十一难,终于成功编译了
+
+
+5. 更新工作空间
 ```
 cd autoware
 git pull
@@ -112,14 +170,15 @@ rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ```
-5. 下载demo地图数据包
+6. 下载demo地图数据包
 ```
 gdown -O ~/autoware_map/ 'https://docs.google.com/uc?export=download&id=1499_nsbUbIeturZaDj7jhUownh5fvXHd'
 unzip -d ~/autoware_map ~/autoware_map/sample-map-planning.zip
 ```
-6. 运行demo, 在home下创建autoware_map文件夹，将demo地图包放到autoware_map下
+7. 运行demo, 在home下创建autoware_map文件夹，将demo地图包放到autoware_map下
 ```
 cd autoware
 source ~/autoware/install/setup.bash
 ros2 launch autoware_launch planning_simulator.launch.xml map_path:=$HOME/autoware_map/sample-map-planning vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
 ```
+终于配置成功了!
