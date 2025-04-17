@@ -113,8 +113,8 @@ vcs import src < autoware.repos
 source /opt/ros/humble/setup.bash
 # Make sure all previously installed ros-$ROS_DISTRO-* packages are upgraded to their latest version
 sudo apt update && sudo apt upgrade
-rosdep update
-rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+rosdepc update
+rosdepc install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 ```
 3. 编译工作空间
 ```
@@ -155,6 +155,22 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 500
 #查看成功
 g++ --version
 ```
+
+
+- 实际遇到的错误
+    1. 编译报错
+    ```
+    /home/shark/autoware/src/universe/autoware_universe/perception/autoware_tensorrt_common/include/autoware/tensorrt_common/utils.hpp:41:43: error: variable ‘constexpr const std::array<std::basic_string_view<char>, 3> autoware::tensorrt_common::valid_precisions’ has initializer but incomplete type
+    ```
+    缺少头文件
+    ```
+    gedit autoware/src/universe/autoware_universe/perception/autoware_tensorrt_common/include/autoware/tensorrt_common/utils.hpp
+    ```
+    ```
+    #include <array>
+    #include <string_view>
+    ```
+    
 历经九九八十一难,终于成功编译了
 
 
