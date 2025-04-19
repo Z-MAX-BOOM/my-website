@@ -1,6 +1,6 @@
 {
   "label": "sharkBot",
-  "position": 1,
+  "position": 3,
   "link": {
     "type": "generated-index",
     "description": "基于Ros的三轮清扫机器人运动控制与导航"
