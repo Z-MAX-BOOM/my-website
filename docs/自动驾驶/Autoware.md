@@ -1,4 +1,8 @@
-# 安装并测试demo
+---
+sidebar_position: 2
+---
+
+# 安装Autoware并测试demo
 本文章是ROS2 Humble版本的最新autoware源码安装方式、autoware.universe安装方式
 ubuntu22.04
 
