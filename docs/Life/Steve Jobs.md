@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 # 史蒂夫 乔布斯(Steve Jobs)在 Stanford 2005年毕业典礼上的演讲
 
 [演讲视频](https://www.bilibili.com/video/BV1oW411h7Ea/)
