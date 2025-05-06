@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 切换到你的 Git 仓库目录，根据实际情况修改路径
-cd ~/my-website
+cd ~/Desktop/my-website
 # 添加所有更改的文件到暂存区
 git add .
 
