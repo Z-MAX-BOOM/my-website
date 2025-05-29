@@ -113,8 +113,8 @@ const config: Config = {
               to: '/docs/intro',
             },
             {
-              label: 'SharkBot',
-              to: '/docs/category/sharkbot',
+              label: '随心记',
+              to: '/docs/category/Life',
             }
           ],
         },
@@ -148,7 +148,7 @@ const config: Config = {
             },
             {
               label: 'Gitee',
-              href: 'https://itee.com/shaaaaark',
+              href: 'https://gitee.com/shaaaaark',
             },
           ],
         },

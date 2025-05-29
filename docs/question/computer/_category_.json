@@ -1,6 +1,6 @@
 {
-  "label": "computer",
-  "position": 6,
+  "label": "电脑维修",
+  "position": 2,
   "link": {
     "type": "generated-index",
     "description": "针对电脑的软硬件出现的问题进行修复汇总"

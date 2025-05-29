@@ -3,8 +3,11 @@ sidebar_position: 1
 ---
 # 游戏设计框架
 作者：shaaaaark
+
 data: 2025-05-22
+
 启发：BiliBili UP主：[森树Tree](https://space.bilibili.com/349516380)
+
 [关于我用300天从零制作游戏最后上架Steam这件事](https://www.bilibili.com/video/BV1GMFfekEy5)
 
 

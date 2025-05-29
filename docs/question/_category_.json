@@ -1,6 +1,6 @@
 {
-  "label": "记录",
-  "position": 1,
+  "label": "疑难杂症",
+  "position": 4,
   "link": {
     "type": "generated-index",
     "description": "记录"
