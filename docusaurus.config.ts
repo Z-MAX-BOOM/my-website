@@ -114,7 +114,7 @@ const config: Config = {
             },
             {
               label: '随心记',
-              to: '/docs/category/Life',
+              to: '/docs/category/life',
             },
             {
               label: '游戏开发',
