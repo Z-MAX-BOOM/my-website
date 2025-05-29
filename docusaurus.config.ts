@@ -109,12 +109,16 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Intro',
-              to: '/docs/intro',
+              label: '好书推荐',
+              to: '/docs/category/record/book', 
             },
             {
               label: '随心记',
               to: '/docs/category/Life',
+            },
+            {
+              label: '游戏开发',
+              to: '/docs/category/game/first_demo',
             }
           ],
         },
