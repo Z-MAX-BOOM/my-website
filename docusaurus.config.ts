@@ -88,7 +88,7 @@ const config: Config = {
         src: 'img/shaaaaark.svg',
       },
       items: [
-        {to: '/docs', label: 'Docs', position: 'left'},
+        {to: '/docs/intro', label: 'Docs', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/Z-MAX-BOOM',
@@ -110,15 +110,15 @@ const config: Config = {
           items: [
             {
               label: '好书推荐',
-              to: '/docs/category/record/book', 
+              to: '/docs/category/书籍', 
             },
             {
               label: '随心记',
-              to: '/docs/category/life',
+              to: '/docs/category/随心记',
             },
             {
               label: '游戏开发',
-              to: '/docs/category/game/first_demo',
+              to: '/docs/category/游戏开发',
             }
           ],
         },
