@@ -110,7 +110,7 @@ const config: Config = {
           items: [
             {
               label: '好书推荐',
-              to: '/docs/category/record/book', 
+              to: '/docs/category/book', 
             },
             {
               label: '随心记',
@@ -118,7 +118,7 @@ const config: Config = {
             },
             {
               label: '游戏开发',
-              to: '/docs/category/game/first_demo',
+              to: '/docs/category/first_demo',
             }
           ],
         },
