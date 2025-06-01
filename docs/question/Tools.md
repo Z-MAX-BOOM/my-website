@@ -19,3 +19,4 @@ sidebar_position: 1
 - [NCM格式转换](http://ncm.worthsee.com/)
 - [小说下载站](http://downnovel.com/)
 - [B站视频下载](https://bilibili.iiilab.com/)
+- [资源网站](https://www.xiaoyetools.xyz/)

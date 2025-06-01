@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Introduction
 
 这是鲨鱼的个人文档，用于记录各种知识
