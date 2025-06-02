@@ -20,3 +20,4 @@ sidebar_position: 1
 - [小说下载站](http://downnovel.com/)
 - [B站视频下载](https://bilibili.iiilab.com/)
 - [资源网站](https://www.xiaoyetools.xyz/)
+- [异星软件空间](https://www.yxssp.com/)
