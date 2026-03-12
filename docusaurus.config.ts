@@ -90,8 +90,8 @@ const config: Config = {
         src: 'img/shaaaaark.svg',
       },
       items: [
-        {to: '/docs/intro', label: 'Docs', position: 'left'},
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/docs/intro', label: '简介', position: 'left'},
+        {to: '/blog', label: '博客', position: 'left'},
         {
           href: 'https://github.com/Z-MAX-BOOM',
           label: 'GitHub',
