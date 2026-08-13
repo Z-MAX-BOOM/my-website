@@ -3,7 +3,9 @@ sidebar_position: 4
 ---
 # Reset
 作词 : 지훈/Tiger JK
+
 作曲 : 李胜洙/황찬희
+
 [MV](https://www.bilibili.com/video/BV1ks411D7eJ/)
 ```
 내 맘에 깊이 가득 차버린
